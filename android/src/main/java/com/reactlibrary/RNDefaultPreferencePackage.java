@@ -12,8 +12,8 @@ import com.facebook.react.uimanager.ViewManager;
 import com.facebook.react.bridge.JavaScriptModule;
 public class RNDefaultPreferencePackage implements ReactPackage {
     @Override
-    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-      return Arrays.<NativeModule>asList(new RNDefaultPreferenceModule(reactContext));
+    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext, String storeKey) {
+      return Arrays.<NativeModule>asList(new RNDefaultPreferenceModule(reactContext, storeKey));
     }
 
     @Override

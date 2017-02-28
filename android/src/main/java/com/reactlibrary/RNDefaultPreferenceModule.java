@@ -21,9 +21,14 @@ import java.util.Map;
 public class RNDefaultPreferenceModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
+  private final String storeKey;
 
-  public RNDefaultPreferenceModule(ReactApplicationContext reactContext) {
+  public RNDefaultPreferenceModule(ReactApplicationContext reactContext, String storeKey) {
     super(reactContext);
+    this.storeKey = storeKey;
+    if (this.storeKey == null){
+      this.storeKey = "react-native";
+    }
     this.reactContext = reactContext;
   }
 
@@ -101,7 +106,7 @@ public class RNDefaultPreferenceModule extends ReactContextBaseJavaModule {
   }
 
   private SharedPreferences getPreferences() {
-    return getCurrentActivity().getSharedPreferences("react-native", Context.MODE_PRIVATE);
+    return getCurrentActivity().getSharedPreferences(storeKey, Context.MODE_WORLD_READABLE + Context.MODE_WORLD_WRITEABLE);
   }
   private SharedPreferences.Editor getEditor() {
     return getPreferences().edit();
