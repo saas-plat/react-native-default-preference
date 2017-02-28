@@ -24,10 +24,11 @@ public class RNDefaultPreferenceModule extends ReactContextBaseJavaModule {
   private final String storeKey;
 
   public RNDefaultPreferenceModule(ReactApplicationContext reactContext, String storeKey) {
-    super(reactContext);
-    this.storeKey = storeKey;
-    if (this.storeKey == null){
+    super(reactContext);    
+    if (storeKey == null){
       this.storeKey = "react-native";
+    }else{
+      this.storeKey = storeKey;
     }
     this.reactContext = reactContext;
   }
